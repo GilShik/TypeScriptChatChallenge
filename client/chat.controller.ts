@@ -5,7 +5,14 @@ import {IChatUIEventsHandler} from "./interfaces/chat.ui.events.handler.interfac
 import {IChatEventsHandler} from "./interfaces/chat.events.handler.interface";
 
 export class ChatController implements IChatEventsHandler, IChatUIEventsHandler {
-    private user: User;
+
+    //==========================================================================================
+    // this class responsible to control the chat actions -
+    // listing to events coming from ChatEventsService via IChatEventsHandler implementation
+    // and ChatUI via IChatUIEventsHandler implementation
+    //==========================================================================================
+
+    private currentUser: User;
 
     constructor(private chatEventsService: ChatEventsService, private chatUI: ChatUI) {
         // subscribe to events coming from server
@@ -19,7 +26,11 @@ export class ChatController implements IChatEventsHandler, IChatUIEventsHandler 
     // functions callbacks for getting events/messages from the server
 
     messageArrived(fromUser: UserMessage): void {
-        this.chatUI.showMessageInChat(fromUser, this.user);
+
+    }
+
+    userConnected(username: string): void {
+
     }
 
     //</editor-fold>
@@ -28,13 +39,15 @@ export class ChatController implements IChatEventsHandler, IChatUIEventsHandler 
     // functions callbacks for getting UI events like the user sending a message
 
     onSendMessage(message: string) {
-        this.chatEventsService.sendMessage(this.user?.Name, message);
+        this.chatEventsService.sendMessage(this.currentUser?.Name, message);
     }
 
     onUserConnectToChat(username: string) {
-        this.user = new User(username);
+        this.currentUser = new User(username);
         this.chatEventsService.connectToChat(username);
     }
+
+
 
     //</editor-fold>
 }

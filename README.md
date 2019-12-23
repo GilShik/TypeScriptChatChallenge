@@ -46,17 +46,28 @@ there is a package.json file (NPM) and we can run the following commands:
  - ```npm start``` - in order to run the application.
 
 ## Challenge
- currently the application runs and the only feature that works is the send message.
- the user can send messages and see other messages being sent from other users.
+ currently the application shows the username you entered in the join the chat popup. 
  
  we would like to add the following features
 
-(the **UI code**(HTML manipulation) for these features already written just use it).
+First challenge
+ - Show the message being sent in the chat.
+ **(Server already implemented, only Client side change needed)**.
  - Show which user has connected/joined to the chat. 
- - Show which user has disconnected/left from the chat.
- - Show the user who wrote a message next to the message itself.
- - Show the number of users connected to the chat.
+ **(Server already implemented, only Client side change needed)**.
  
- (**No UI code**(HTML manipulation) is written for this feature)
+ Second challenge
+ - Show the user who wrote the message next to the message from first challenge.
+ **(both Server and Client side changes needed, UI implementation already include just use it)**.
+ - Show which user has disconnected/left from the chat.
+ **(both Server and Client side changes needed, UI implementation already include just use it)**.
+ 
+ Third challenge
+ - Show the number of users connected to the chat.
+ **(both Server and Client side changes needed, UI implementation already include just use it)**.
+ 
+ Fourth challenge
  - Show a list of connected users.
+ **(both Server and Client side (including UI - html) changes needed)**.
  - (Optional) Show which user is typing...(and of course when he stopped).
+ **(both Server and Client side changes needed)**.

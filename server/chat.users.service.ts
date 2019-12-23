@@ -1,5 +1,5 @@
-import {User} from "../model/user";
 
 export class ChatUsersService {
-    //a class to hold state regarding user/s
+    //a class to hold state and serve other classes regarding user/s...
+
 }

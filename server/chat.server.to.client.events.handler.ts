@@ -5,9 +5,22 @@ import {ChatServerToClientEvent} from "../model/enums/chat.server.to.client.even
 
 export class ChatServerToClientEventsHandler implements IChatServerToClientEventsHandler {
 
+    //==========================================================================================
+    // this class responsible for the outgoing messages/events from the server to the clients
+    // using socket.io
+    //==========================================================================================
+
     constructor(private io: io.Server){}
 
     sendMessageToClients(userMessage: UserMessage) {
         this.io.emit(ChatServerToClientEvent.MESSAGE_TO_CLIENTS, userMessage);
+    }
+
+    userConnected(username: string) {
+        this.io.emit(ChatServerToClientEvent.USER_CONNECTED, username);
+    }
+
+    sendUserDisconnected(username: string) {
+        this.io.emit(ChatServerToClientEvent.USER_DISCONNECTED, username);
     }
 }

@@ -5,6 +5,11 @@ import {ChatClientToServerEvent} from "../model/enums/chat.client.to.server.even
 
 export class ChatEventsService {
 
+    //==========================================================================================
+    // this class responsible for communicating with the server, listen to events
+    // and sending events
+    //==========================================================================================
+
     private socket = io();
     private chatServiceSubscribers: IChatEventsHandler[] = [];
 
@@ -13,6 +18,8 @@ export class ChatEventsService {
     }
 
     public connectToChat(username: string) {
+        //this will send a event/message USER_CONNECTED to the server
+        this.socket.emit(ChatClientToServerEvent.USER_CONNECTED, username);
     }
 
     public subscribeToChatEvents(chatAction: IChatEventsHandler) {
@@ -25,6 +32,18 @@ export class ChatEventsService {
         this.socket.on(ChatServerToClientEvent.MESSAGE_TO_CLIENTS , (userMessage) => {
             this.chatServiceSubscribers.forEach((subscriber: IChatEventsHandler) => {
                 subscriber.messageArrived(userMessage);
+            });
+        });
+
+        this.socket.on(ChatServerToClientEvent.USER_CONNECTED, (usernameThatJustConnected) => { //() => {} is a nameless function
+            this.chatServiceSubscribers.forEach((subscriber: IChatEventsHandler) => {
+                subscriber.userConnected(usernameThatJustConnected.trim());
+            });
+        });
+
+        this.socket.on(ChatServerToClientEvent.USER_DISCONNECTED, (usernameThatJustDisconnected) => { //() => {} is a nameless function
+            this.chatServiceSubscribers.forEach((subscriber: IChatEventsHandler) => {
+                //should call the subscriber ??
             });
         });
     }

@@ -12,6 +12,13 @@ import {ChatClientToServerEvent} from "../model/enums/chat.client.to.server.even
 
 export class App {
 
+    //==============================================================================================
+    // this class responsible for initialize the application including wiring the socket.io
+    // events coming from the client.
+    // also setting up the http server using express.
+    // it uses IChatReceivedFromClientEventsHandler to notify for those client events.
+    //==============================================================================================
+
     private expressApplication: express.Application;
     private chatUsersService: ChatUsersService;
     private chatReceivedFromClientEventsHandler: IChatReceivedFromClientEventsHandler;
@@ -53,6 +60,15 @@ export class App {
 
             socket.on(ChatClientToServerEvent.MESSAGE_TO_SERVER, args => {
                 this.chatReceivedFromClientEventsHandler.messageReceived(socket.id, args);
+            });
+
+            socket.on(ChatClientToServerEvent.USER_CONNECTED, args => {
+                this.chatReceivedFromClientEventsHandler.userConnected(socket.id, args);
+            });
+
+            socket.on(ChatClientToServerEvent.USER_DISCONNECTED, args => {
+                // handle disconnected/connection closed
+                // think of using the socket.id in order to identify who left the chat
             });
         });
     }
