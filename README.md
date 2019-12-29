@@ -67,7 +67,8 @@ As is, a user can type a message, yet the message is not sent in the group chat.
  **(both Server and Client side changes needed, UI implementation already include just use it)**.
  
  ### Fourth challenge
+ - Show which user is typing... (and of course when they have stopped).  
+ **(both Server and Client side changes needed)**.
  - Show a list of the connected users.  
  **(both Server and Client side (including UI - html) changes needed)**.
- - (Optional) Show which user is typing... (and of course when they have stopped).  
- **(both Server and Client side changes needed)**.
+ 
