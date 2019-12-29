@@ -1,6 +1,6 @@
 import {App} from "./app";
 
-const port = parseInt(process.env.PORT)|| 3000;
+const port = parseInt(process.env.PORT)|| 3001;
 const app: App = new App(port);
 
 
