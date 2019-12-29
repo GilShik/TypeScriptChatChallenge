@@ -24,31 +24,73 @@ for more info and documentation go to [socket.io](https://socket.io).
 <br/>
 
 ## Prerequisites
-In order to develop and run this application the following should be installed: 
- - Node
- - NPM
- - TypeScript
- 
-I recommend Intellij Idea IDE or VS Code in order to develop and run the application but you can use you own IDE.
+1. Login to https://consumersa.eu10cf.applicationstudio.cloud.sap/index.html with your username and password.
 
- 
+
+2. Enter to your workspace by clicking on the Students_Workshop link:
+
+    ![Alt text](README_resources/Enter_Dev_Space.png?raw=true "Enter Dev Space")
+3. From the main menu, choose **Terminal, New Terminal**.
+
+    ![Alt text](README_resources/open_new_terminal.png?raw=true "Enter Dev Space")
+    - From the terminal, run `cd projects` to go to the projects directory.
+    - From the terminal, run `git clone https://github.com/GilShik/TypeScriptChatChallenge.git` to copy the challenge project from github to you workspace.
+
+4. From the main menu, choose **File, Open Workspace**.
+    - Choose **TypeScriptChatChallenge** and then **Open**.
+    
+        ![Alt text](README_resources/open_workspace.png?raw=true "Enter Dev Space")
 
 ## Short explanation about the application
 This is a Node.js application that uses Express to run HTTP server.
-The application built from server side code that runs in the server(Node.js) and client side code that runs in the browser.  
+
+the application built from server side code that runs in the server(Node.js) and client side code that runs in the browser.
 **Note:** server folder with the server code and client folder with the client code.
 
 The code is written in TypeScript and complies to JavaScript.  
-There is a `package.json` file (npm). Using this file we can run the following commands:
+There is a `package.json` file (npm). Using this file we can run the following commands from the terminal:
+
  - ```npm install``` - in order to install all the packages the application uses.
  - ```npm run build-project``` - in order to build the JavaScript output code into dist folder and also build and prepare 
  the client JavaScript code to run in the browser.
  - ```npm start``` - in order to run the application.
 
-## Challenges
-As is, a user can type a message, yet the message is not sent in the group chat.
+Run the application with debugging (instead of `npm start`):
+-
+ - (Optional) Set breakpoints by clicking on the left side of the line numbers in your code editor:
+ 
+      ![Alt text](README_resources/breakpoint.png?raw=true "Enter Dev Space")
 
+ - Open the Debug pane from the left side menu:
+ 
+     ![Alt text](README_resources/Debug_pane.png?raw=true "Enter Dev Space")
+ - Click on the Start Debugging button:
+ 
+     ![Alt text](README_resources/Run_Debug.png?raw=true "Enter Dev Space")
+    - On the first run you will be asked to Expose and Open a port for the application. Click on the **Expose and Open** button:
+ 
+        ![Alt text](README_resources/Expose_And_Open.png?raw=true "Enter Dev Space")
+
+    - Press Enter on this optional dialog:
+    
+        ![Alt text](README_resources/Port_Description.png?raw=true "Enter Dev Space")
+
+ - A new tab with your running application will be opened.
+ 
+ - For the next run:
+    - Stop your running application from the debug pane.
+    - Build the project with your changes with the following command from the terminal: `npm run build-project`
+    - Run the application again from the debug pane.
+    - Refresh your running application's tab or click again on the **Open in new tab** button.
+ 
+      ![Alt text](README_resources/OpenTab.png?raw=true "Enter Dev Space")
+
+  
+## Challenge
+As is, a user can type a message, yet the message is not sent in the group chat.
+ 
  We would like to add the following features:
+
 
 ### First challenge
  - Show the message that was sent in the group chat.  
